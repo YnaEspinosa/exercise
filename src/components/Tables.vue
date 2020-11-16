@@ -18,18 +18,38 @@
                 </table>
             </div>
             <div class="col-9">
-                <table class="table table-striped table-hover">
+                <table class="table">
                     <thead>
-                        <tr>
-                            <th scope="col">Post Title</th>
-                            <th scope="col">Post Content</th>
-                        </tr>
+                        <th>Post</th>
                     </thead>
                     <tbody>
-                        <tr v-bind:key="post.id" v-for="post in posts">
-                            <td>{{post.title}}</td>
-                            <td>{{post.body}}</td>
-                        </tr>
+                      
+                            <tr v-bind:key="post.id" v-for="post in posts">
+                               <td>
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-link" type="button" data-toggle="collapse" :data-target="`#collapse${post.id}`" aria-expanded="true" :aria-controls="`collapse${post.id}`">
+                                                    {{post.title}}
+                                                    </button>
+                                                </h2>
+                                        </div>
+
+                                        <div :id="`collapse${post.id}`" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            {{post.body}}
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                               </td>
+                            </tr>
+                      
                     </tbody>
                 </table>
             </div>
